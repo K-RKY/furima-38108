@@ -30,38 +30,40 @@
 | shipping_days_id | integer    | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
 * belongs_to :user
+* has_one :purchase_record
 
 ## addressesテーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | string     | null: false                    |
-| prefecture          | string     | null: false                    |
+| prefecture_id       | string     | null: false                    |
 | municipalities      | string     | null: false                    |
 | house_number        | string     | null: false                    |
+| house_name          | string     | null: false                    |
 | phone_number        | integer    | null:false                     | 
-| purchase_records_id | references | null: false, foreign_key: true |
+| purchase_records    | references | null: false, foreign_key: true |
 
 ### Association
 
-* has_many :purchase_records
+* has_one :purchase_record
 
 ## purchase_recordsテーブル
 
-| Column           | Type       | Options                       |
-| ---------------- | ---------  | ----------------------------- |
-| purchase_user    | string     | null: false                   |
-| purchase_item    | string     | null: false                   |
-| shipping_address | string     | null: false                   |
-| user_id          | references | null:false, foreign_key: true |
+| Column  | Type       | Options                       |
+| ------- | ---------  | ----------------------------- |
+| user    | references | null:false, foreign_key: true |
+| item    | references | null:false, foreign_key: true |
+| address | references | null:false, foreign_key: true |
 
 
 ### Association
 
 * belongs_to :user
 * belongs_to :address
+* belongs_to :item
