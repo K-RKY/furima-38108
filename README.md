@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column                  | Type   | Options     |
-| ----------------------- | ------ | ----------- |
-| nickname                | string | null: false |
-| email                   | string | null: false |
-| encrypted_password      | string | null: false |
-| first_name              | string | null: false |
-| first_name_kana         | string | null: false |
-| family_name             | string | null: false |
-| family_name_kana        | string | null: false |
-| birth_day               | date   | null: false |
+| Column                  | Type   | Options                   |
+| ----------------------- | ------ | ------------------------- |
+| nickname                | string | null: false               |
+| email                   | string | null: false, unique: true |
+| encrypted_password      | string | null: false               |
+| first_name              | string | null: false               |
+| first_name_kana         | string | null: false               |
+| family_name             | string | null: false               |
+| family_name_kana        | string | null: false               |
+| birth_day               | date   | null: false               |
 
 ### Association
 
@@ -42,16 +42,16 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | string     | null: false                    |
-| prefecture_id       | string     | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | municipalities      | string     | null: false                    |
 | house_number        | string     | null: false                    |
-| house_name          | string     | null: false                    |
-| phone_number        | integer    | null:false                     | 
-| purchase_records    | references | null: false, foreign_key: true |
+| house_name          | string     |
+| phone_number        | string     | null:false                     | 
+| purchase_record     | references | null: false, foreign_key: true |
 
 ### Association
 
-* has_one :purchase_record
+* belongs_to :purchase_record
 
 ## purchase_recordsテーブル
 
@@ -59,11 +59,9 @@
 | ------- | ---------  | ----------------------------- |
 | user    | references | null:false, foreign_key: true |
 | item    | references | null:false, foreign_key: true |
-| address | references | null:false, foreign_key: true |
-
 
 ### Association
 
 * belongs_to :user
-* belongs_to :address
 * belongs_to :item
+* has_one :address
