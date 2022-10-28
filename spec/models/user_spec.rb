@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Family nameは不正な値です')
     end
-    it 'firlt_name_kanaはカタカナでなければ登録できない' do
+    it 'first_name_kanaはカタカナでなければ登録できない' do
       @user.first_name_kana = 'やまだ'
       @user.valid?
       expect(@user.errors.full_messages).to include('First name kanaは不正な値です')
@@ -58,8 +58,18 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Family name kanaは不正な値です')
     end
-    it 'passwordは半角英数字を混合しなければ登録できない' do
+    it 'passwordは英字のみでは登録できない' do
+      @user.password = 'abcdef'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Passwordは不正な値です')
+    end
+    it 'passwordは数字のみでは登録できない' do
       @user.password = '123456'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Passwordは不正な値です')
+    end
+    it 'passwordは全角文字を含むと登録できない' do
+      @user.password = '12abあい'
       @user.valid?
       expect(@user.errors.full_messages).to include('Passwordは不正な値です')
     end
