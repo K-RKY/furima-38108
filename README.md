@@ -15,7 +15,7 @@
 
 ### Association
 
-* has_many :purchase_records
+* has_many :orders
 * has_many :items
 
 ## itemsテーブル
@@ -35,7 +35,7 @@
 ### Association
 
 * belongs_to :user
-* has_one :purchase_record
+* has_one :order
 
 ## addressesテーブル
 
@@ -51,7 +51,7 @@
 
 ### Association
 
-* belongs_to :purchase_record
+* belongs_to :order
 
 ## ordersテーブル
 
