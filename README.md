@@ -53,7 +53,7 @@
 
 * belongs_to :purchase_record
 
-## purchase_recordsテーブル
+## ordersテーブル
 
 | Column  | Type       | Options                       |
 | ------- | ---------  | ----------------------------- |
