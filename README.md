@@ -42,12 +42,12 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | string     | null: false                    |
-| prefecture_id       | integer    | null: false                    |
+| shipping_area_id       | integer    | null: false                    |
 | municipalities      | string     | null: false                    |
 | house_number        | string     | null: false                    |
 | house_name          | string     |
 | phone_number        | string     | null:false                     | 
-| purchase_record     | references | null: false, foreign_key: true |
+| order     | references | null: false, foreign_key: true |
 
 ### Association
 
