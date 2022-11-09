@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :prevent_url, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    @items = Item.all.order(created_at: :desc) 
   end
 
   def new
@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.order!= nil
+      redirect_to root_path
+    end
   end
 
   def update
