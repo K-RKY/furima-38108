@@ -12,7 +12,7 @@ class OrderAddress
   validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/}
   validates :token, presence: true
 
-  def ordersave
+  def save
     order = Order.create(user_id: user_id, item_id: item_id)
     
     Address.create(post_code: post_code, shipping_area_id: shipping_area_id, municipalities: municipalities, house_number: house_number, house_name: house_name, phone_number: phone_number,order_id: order.id)
